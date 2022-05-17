@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block title %}Expenses{% endblock %} {% block content
+%}
+<h1 align="center">Expenses</h1>
+    <br>
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th style="width:5%">Edit/Delete</th>
+    </tr>
+  {% for expense in user.expenses %}
+  <tr>
+	  <td><a href="{{ url_for('views.edit_expense', id=expense.id)}}">{{ expense.expense_name }}</a></td>
+      <td>${{ expense.expense_amount }}</td>
+      <td>{{ expense.expense_date }}</td>
+      <td>
+        <button type="button" class="close" onClick="deleteExpense({{ expense.id }})">
+        <span aria-hidden="true"><i class="fa-solid fa-circle-xmark"></i></span>
+        </button>
+        <button type="button" class="close" onclick="editExpense({{ expense.id }})">
+        <span aria-hidden="true"><i class="fas fa-edit fa-sm"></i></span>
+        </button>
+      </td>
+    </tr>
+  {% endfor %}
+
+</table>
+
+<form method="POST">
+<!--  <h3 align="center">Expense List</h3>-->
+  <div class="form-group">
+    <label for="expenseName">Expense Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="expenseName"
+      name="expenseName"
+      placeholder="Enter Expense Name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="expenseAmount">Expense Amount</label>
+    <input
+      type="number" min="0.00"
+      class="form-control"
+      id="expenseAmount"
+      name="expenseAmount"
+      placeholder="Enter amount"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="expenseDate">Expense Date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="expenseDate"
+      name="expenseDate"
+    />
+  </div>
+
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Expense</button>
+  </div>
+</form>
+    <br><br>
+{% endblock %}

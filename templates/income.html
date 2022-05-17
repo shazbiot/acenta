@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block title %}Income{% endblock %} {% block content
+%}
+<h1 align="center">Income</h1>
+    <br>
+
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th style="width:5%">Edit/Delete</th>
+    </tr>
+{% for income in user.income %}
+	<tr>
+	  <td>{{ income.income_name }}</td>
+      <td>${{ income.income_amount }}</td>
+      <td>{{ income.income_date }}</td>
+      <td>
+        <button type="button" class="close" onClick="deleteIncome({{ income.id }})">
+        <span aria-hidden="true"><i class="fa-solid fa-circle-xmark"></i></span>
+        </button>
+        <button type="button" class="close" onclick="editIncome({{ income.id }})">
+        <span aria-hidden="true"><i class="fas fa-edit fa-sm"></i></span>
+        </button>
+      </td>
+	</tr>
+{% endfor %}
+
+</table>
+
+<form method="POST">
+  <div class="form-group">
+    <label for="incomeName">Income Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="incomeName"
+      name="incomeName"
+      placeholder="Enter Income Name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="incomeAmount">Income Amount</label>
+    <input
+      type="number" min="0.00"
+      class="form-control"
+      id="incomeAmount"
+      name="incomeAmount"
+      placeholder="Enter amount"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="incomeDate">Income Date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="incomeDate"
+      name="incomeDate"
+    />
+  </div>
+
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Income</button>
+  </div>
+</form>
+    <br><br>
+{% endblock %}
