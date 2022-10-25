@@ -5,7 +5,7 @@
 <br>
 • <a href="https://github.com/s3052912">Nelson Lay</a>
 <br>
-• <a href="https://github.com/shazbiot">Matthew Salir</a>
+• <a href="https://github.com/shazbiot">Matthew Sali</a>
 <br>
 • <a href="https://github.com/DrSChung">Dr Stephen Chung</a>
 
